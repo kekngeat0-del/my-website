@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MODERNSHOP - KEK NGEAT Computer Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #3bf6e6;
+            --card-bg: #2d40a2;
+            --text-main: #df11f1;
+            --text-muted: #64748b;
+            --accent-yellow: #08ea62;
+            --border-color: #30a43b;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', 'Kantumruy Pro', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* Top Announcement Bar */
+        .top-banner {
+            background-color: #0b0b0b;
+            color: #246dda;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 8px 0;
+            text-transform: uppercase;
+        }
+
+        .top-banner-content {
+            max-width: 1350px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .top-banner span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Header Navigation */
+        header {
+            background: rgba(198, 235, 14, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 12px 0;
+        }
+
+        .header-container {
+            max-width: 1350px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background-color: var(--accent-yellow);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000000;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(222, 179, 53, 0.3);
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding-bottom: 4px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-main);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-main);
+            border-radius: 2px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .search-box {
+            position: relative;
+            width: 200px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 8px 14px 8px 36px;
+            background: #084b8f;
+            border: 1px solid transparent;
+            border-radius: 20px;
+            font-size: 13px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .search-box input:focus {
+            background: #ea2dfb;
+            border-color: #0ec5d5;
+            box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.05);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #1871ed;
+            font-size: 13px;
+        }
+
+        .icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #0c63ba;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #334155;
+            font-size: 14px;
+            cursor: pointer;
+            position: relative;
+            transition: 0.2s ease;
+        }
+
+        .icon-btn:hover {
+            background: #2cd61f;
+            color: var(--text-main);
+        }
+
+        .badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background-color: var(--text-main);
+            color: #39f449;
+            font-size: 10px;
+            font-weight: 700;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #fa49f4;
+        }
+
+        .lang-selector {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #0964be;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            font-size: 12px;
+            font-weight: 700;
+            color: #334155;
+        }
+
+        .lang-flag {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .container {
+            max-width: 1350px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 50px 0 80px 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .tag-sub {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            line-height: 1.05;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1.5px;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 35px;
+            max-width: 480px;
+            line-height: 1.6;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .btn-main {
+            background: #000;
+            color: #a42424;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #000;
+            padding: 14px 24px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 25px;
+        }
+
+        .stat-box h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .stat-box p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .hero-card {
+            background: #df2525;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            border: 1px solid #c32424;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-card img {
+            width: 100%;
+            max-width: 380px;
+            height: 320px;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+
+        .hero-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .card-details {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 20px;
+        }
+
+        .card-details h4 {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .card-details .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        /* Filter Tabs */
+        .filter-section {
+            margin: 40px 0 25px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 10px 22px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            transition: 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            margin: 15px 0;
+        }
+
+        .product-card .brand-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .product-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 5px 0;
+        }
+
+        .product-card .spec-desc {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-bottom: 10px;
+        }
+
+        .product-card .price-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .product-card .price {
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .btn-add {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Footer / CV Info */
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 60px 0 30px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--accent-yellow);
+        }
+
+        .footer-col p {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #666;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="top-banner-content">
+            <span><i class="fa-solid fa-truck-fast"></i> Free Shipping On Orders Over $500</span>
+            <span><i class="fa-solid fa-shield-halved"></i> 100% Genuine Military-Grade Warranty</span>
+            <span><i class="fa-solid fa-laptop"></i> Premium Gaming Machines</span>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo-area">
+                <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+                <span class="logo-text">MODERNSHOP</span>
+            </a>
+
+            <nav>
+                <ul>
+                    <li><a href="#" class="active" id="m-home">HOME</a></li>
+                    <li><a href="#products" id="m-collections">COLLECTIONS</a></li>
+                    <li><a href="#products" id="m-products">PRODUCTS <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></a></li>
+                    <li><a href="#products" id="m-deals">DEALS</a></li>
+                    <li><a href="#contact" id="m-contact">CONTACT</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="search-input" placeholder="Search laptop..." onkeyup="searchProduct(this.value)">
+                </div>
+
+                <button class="icon-btn" title="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge">0</span>
+                </button>
+
+                <button class="icon-btn" title="Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="badge">0</span>
+                </button>
+
+                <div class="lang-selector" onclick="switchLang()">
+                    <img id="flag-img" class="lang-flag" src="https://flagcdn.com/w40/kh.png" alt="Khmer Flag">
+                    <span id="lang-text">KH</span>
+                    <i class="fa-solid fa-chevron-down" style="font-size: 10px; color: #64748b;"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-grid">
+            <div>
+                <span class="tag-sub" id="txt-tag">MILITARY-GRADE DURABILITY & VALUE</span>
+                <h1 class="hero-title" id="txt-title">Power Beyond Limits.</h1>
+                <p class="hero-desc" id="txt-desc">Discover top-tier laptops built for ultimate performance, gaming, and creative workflows. Designed for users who demand extreme reliability.</p>
+                
+                <div class="hero-btns">
+                    <a href="#products" class="btn-main" id="btn-explore">EXPLORE COLLECTION <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#contact" class="btn-secondary" id="btn-deals">VIEW CONTACT</a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <h3>15+</h3>
+                        <p id="st-1">LAPTOP MODELS</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>100%</h3>
+                        <p id="st-2">GENUINE PRODUCTS</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>4.9/5</h3>
+                        <p id="st-3">USER RATING</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <img id="heroImage" src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600&q=80" alt="ASUS TUF Gaming A15">
+                <div class="card-details">
+                    <div>
+                        <span style="font-size: 0.75rem; color: #888; font-weight:700;">FEATURED GAMING LAPTOP</span>
+                        <h4 id="heroModelName">ASUS TUF Gaming A15</h4>
+                    </div>
+                    <div class="price" id="heroModelPrice">$1,099</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid (15 Products) -->
+    <section class="container" id="products">
+        <div class="filter-section">
+            <div class="filter-tabs">
+                <button class="tab-btn active" onclick="filterCategory('all', this)" id="tab-all">All Laptops (15)</button>
+                <button class="tab-btn" onclick="filterCategory('tuf', this)">TUF Gaming (5)</button>
+                <button class="tab-btn" onclick="filterCategory('rog', this)">ROG / Legion (5)</button>
+                <button class="tab-btn" onclick="filterCategory('macbook', this)">MacBook / Work (5)</button>
+            </div>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <!-- Footer / CV Contact Info -->
+    <footer id="contact">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>CURRICULUM VITAE</h3>
+                <p><strong>Name:</strong> KEK NGEAT</p>
+                <p><strong>Present Address:</strong> Tuk Thla Commune, Sensok District, Phnom Penh</p>
+            </div>
+            <div class="footer-col">
+                <h3>CONTACT INFORMATION</h3>
+                <p><i class="fa-solid fa-phone"></i> <strong>Tell:</strong> 086277578</p>
+                <p><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> kekngeat0@gmail.com</p>
+            </div>
+            <div class="footer-col">
+                <h3>STORE LOCATION & HOURS</h3>
+                <p>Phnom Penh Store Outlet</p>
+                <p>Monday - Sunday: 8:00 AM - 8:30 PM</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 KEK NGEAT COMPUTER STORE. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        let isKhmer = true;
+
+        // 15 Laptop Models (រួមបញ្ចូលទាំង TUF Gaming A14, A15, A16, F15, F16)
+        const computerProducts = [
+            { cat: 'tuf', name: 'ASUS TUF Gaming A14', spec: 'Ryzen 7 8845HS | RTX 4060 | 16GB RAM', price: 1199, image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80' },
+            { cat: 'tuf', name: 'ASUS TUF Gaming A15', spec: 'Ryzen 7 7735HS | RTX 4050 | 16GB RAM', price: 999, image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80' },
+            { cat: 'tuf', name: 'ASUS TUF Gaming A16', spec: 'Ryzen 9 7940HS | RX 7600S | 16GB RAM', price: 1299, image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500&q=80' },
+            { cat: 'tuf', name: 'ASUS TUF Gaming F15', spec: 'Core i7-13620H | RTX 4060 | 16GB RAM', price: 1049, image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80' },
+            { cat: 'tuf', name: 'ASUS TUF Gaming F16', spec: 'Core i7-14700HX | RTX 4070 | 32GB RAM', price: 1499, image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80' },
+            
+            { cat: 'rog', name: 'ASUS ROG Zephyrus G16', spec: 'Core Ultra 9 | RTX 4080 | OLED 240Hz', price: 2399, image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500&q=80' },
+            { cat: 'rog', name: 'Lenovo Legion Pro 5', spec: 'Ryzen 7 7745HX | RTX 4070 | 32GB RAM', price: 1599, image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80' },
+            { cat: 'rog', name: 'MSI Raider GE78 HX', spec: 'Core i9-14900HX | RTX 4090 | 64GB RAM', price: 3299, image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80' },
+            { cat: 'rog', name: 'Acer Predator Helios 16', spec: 'Core i7-13700HX | RTX 4070 | 16GB RAM', price: 1649, image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500&q=80' },
+            { cat: 'rog', name: 'Alienware m18 R2', spec: 'Core i9-14900HX | RTX 4080 | 32GB RAM', price: 2899, image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80' },
+            
+            { cat: 'macbook', name: 'Apple MacBook Pro 16"', spec: 'M3 Max Chip | 36GB RAM | 1TB SSD', price: 3499, image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&q=80' },
+            { cat: 'macbook', name: 'Apple MacBook Air 15"', spec: 'M3 Chip | 16GB RAM | 512GB SSD', price: 1499, image: 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=500&q=80' },
+            { cat: 'macbook', name: 'Dell XPS 16', spec: 'Core Ultra 7 | RTX 4060 | 4K OLED Touch', price: 2199, image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500&q=80' },
+            { cat: 'macbook', name: 'HP Spectre x360 14', spec: 'Core Ultra 7 | 16GB RAM | OLED Touchscreen', price: 1449, image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80' },
+            { cat: 'macbook', name: 'Lenovo ThinkPad X1 Carbon', spec: 'Core Ultra 7 | 32GB RAM | Ultra Light', price: 1899, image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80' }
+        ];
+
+        function renderProducts(items) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+            items.forEach(p => {
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <span class="brand-tag">${p.cat.toUpperCase()}</span>
+                        <img src="${p.image}" alt="${p.name}">
+                        <h3>${p.name}</h3>
+                        <p class="spec-desc">${p.spec}</p>
+                        <div class="price-bar">
+                            <span class="price">$${p.price}</span>
+                            <button class="btn-add" onclick="setHero('${p.name}', ${p.price}, '${p.image}')">View</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function setHero(name, price, img) {
+            document.getElementById('heroModelName').innerText = name;
+            document.getElementById('heroModelPrice').innerText = '$' + price;
+            document.getElementById('heroImage').src = img;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function filterCategory(cat, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            if(cat === 'all') renderProducts(computerProducts);
+            else renderProducts(computerProducts.filter(p => p.cat === cat));
+        }
+
+        function searchProduct(query) {
+            const q = query.toLowerCase();
+            const filtered = computerProducts.filter(p => p.name.toLowerCase().includes(q) || p.spec.toLowerCase().includes(q));
+            renderProducts(filtered);
+        }
+
+        const langData = {
+            km: {
+                flag: "https://flagcdn.com/w40/kh.png",
+                text: "KH",
+                search: "ស្វែងរកកុំព្យូទ័រ...",
+                menu: ["ទំព័រដើម", "កាតាឡុក", "ផលិតផល", "ការបញ្ចុះតម្លៃ", "ទំនាក់ទំនង"],
+                tag: "ភាពធន់កម្រិតយោធា និងតម្លៃសមរម្យ",
+                title: "ថាមពលគ្មានដែនកំណត់",
+                desc: "ស្វែងរកកុំព្យូទ័រយួរដៃកំពូលៗសម្រាប់ការលេងហ្គេម និងការងារទូទៅ។ រៀបចំឡើងសម្រាប់អ្នកដែលត្រូវការកម្លាំងម៉ាស៊ីនខ្លាំង និងភាពធន់។",
+                explore: "មើលទំនិញទាំងអស់",
+                deals: "ព័ត៌មានទំនាក់ទំនង",
+                st1: "ម៉ូឌែលកុំព្យូទ័រ",
+                st2: "ផលិតផលសុទ្ធ 100%",
+                st3: "ការវាយតម្លៃអតិថិជន"
+            },
+            en: {
+                flag: "https://flagcdn.com/w40/gb.png",
+                text: "EN",
+                search: "Search laptop...",
+                menu: ["HOME", "COLLECTIONS", "PRODUCTS", "DEALS", "CONTACT"],
+                tag: "MILITARY-GRADE DURABILITY & VALUE",
+                title: "Power Beyond Limits.",
+                desc: "Discover top-tier laptops built for ultimate performance, gaming, and creative workflows. Designed for users who demand extreme reliability.",
+                explore: "EXPLORE COLLECTION",
+                deals: "VIEW CONTACT",
+                st1: "LAPTOP MODELS",
+                st2: "GENUINE PRODUCTS",
+                st3: "USER RATING"
+            }
+        };
+
+        function switchLang() {
+            isKhmer = !isKhmer;
+            const data = isKhmer ? langData.km : langData.en;
+
+            document.getElementById('flag-img').src = data.flag;
+            document.getElementById('lang-text').innerText = data.text;
+            document.getElementById('search-input').placeholder = data.search;
+
+            document.getElementById('m-home').innerText = data.menu[0];
+            document.getElementById('m-collections').innerText = data.menu[1];
+            document.getElementById('m-products').innerHTML = data.menu[2] + ' <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i>';
+            document.getElementById('m-deals').innerText = data.menu[3];
+            document.getElementById('m-contact').innerText = data.menu[4];
+
+            document.getElementById('txt-tag').innerText = data.tag;
+            document.getElementById('txt-title').innerText = data.title;
+            document.getElementById('txt-desc').innerText = data.desc;
+            document.getElementById('btn-explore').innerHTML = `${data.explore} <i class="fa-solid fa-arrow-right"></i>`;
+            document.getElementById('btn-deals').innerText = data.deals;
+            document.getElementById('st-1').innerText = data.st1;
+            document.getElementById('st-2').innerText = data.st2;
+            document.getElementById('st-3').innerText = data.st3;
+        }
+
+        renderProducts(computerProducts);
+    </script>
+</body>
+</html>
